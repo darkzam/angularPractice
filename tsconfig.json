@@ -1,0 +1,11 @@
+{
+  "files": [ "src/app/app.ts" ],
+  "compilerOptions": {
+    "target": "es5",
+    "removeComments": true,
+    "alwaysStrict": true,
+    "noEmitOnError": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
+  }
+}
