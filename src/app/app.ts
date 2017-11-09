@@ -1,17 +1,46 @@
 
+var container1 = document.getElementById('container');
+var container2 = document.getElementById('container2');
+var container3 = document.getElementById('container3');
+var container4 = document.getElementById('container4');
 
-var container = document.getElementById('container');
+function calculate(x:( string | number[])):any[]{
 
-function Counter(myElement) {
-    this.count = 0;
+  if( typeof x === "string"){
 
-    myElement.innerHTML = this.count;
+  var arraystr= x.split("");
 
-    myElement.addEventListener('click',
-    function () {
+   return arraystr.reverse();
 
-        myElement.innerHTML = +(myElement.innerHTML) + 1 ;
+  }
 
-    } )
+  if(x instanceof Array){
+
+  var arratresult =array();
+
+   for(let u of x){
+
+   arraresult.push(pow2(parseInt(u)))
+
+   }
+
+   return arratresult ;
+  }
+
 }
-new Counter( container );
+
+function pow2(x:number):number{
+
+return x*x;
+
+}
+
+function Impr( param, param2){
+
+  container1.innerHTML = param.split("").join(" ");
+  container2.innerHTML = calculate(param).join(" ");
+  container3.innerHTML = param2.split("").join(" ");
+  container4.innerHTML = calculate(param2.split(""));
+}
+
+new Impr( "1234567", "123456789");
