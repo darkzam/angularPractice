@@ -1,5 +1,5 @@
 {
-  "files": [ "src/app/app.ts" ],
+  "files": [ "src/app/app2.ts" ],
   "compilerOptions": {
     "target": "es5",
     "removeComments": true,
