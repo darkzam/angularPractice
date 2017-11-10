@@ -4,43 +4,33 @@ var container2 = document.getElementById('container2');
 var container3 = document.getElementById('container3');
 var container4 = document.getElementById('container4');
 
-function calculate(x:( string | number[])):any[]{
+function calculate(x:( string | number[])):string{
 
   if( typeof x === "string"){
 
-  var arraystr= x.split("");
-
-   return arraystr.reverse();
+  // if(x instanceof String){
+   //  console.log("entro al if");
+   return x.split("").reverse().join(" ");
 
   }
 
-  if(x instanceof Array){
+  if( x instanceof Array){
 
-  var arratresult =array();
-
-   for(let u of x){
-
-   arraresult.push(pow2(parseInt(u)))
-
-   }
-
-   return arratresult ;
+  x.forEach(function (element,index,x){
+       x[index] = element*element;
+     }); 
+    
+     return x.join(" ");
   }
-
-}
-
-function pow2(x:number):number{
-
-return x*x;
-
+//console.log("return calculate");
 }
 
 function Impr( param, param2){
 
   container1.innerHTML = param.split("").join(" ");
-  container2.innerHTML = calculate(param).join(" ");
-  container3.innerHTML = param2.split("").join(" ");
-  container4.innerHTML = calculate(param2.split(""));
+  container2.innerHTML = calculate(param);
+  container3.innerHTML = "[ " + param2.join(" ") + " ]";
+  container4.innerHTML = "[ " + calculate(param2) + " ]";
 }
 
-new Impr( "1234567", "123456789");
+new Impr( "1234567", [1,2,3,4,5,6,7]);
