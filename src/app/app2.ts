@@ -106,19 +106,35 @@ class RaceCar extends SportCar{
 
 }
 
+var list = document.getElementById("carList");
 var input1 = <HTMLInputElement> document.getElementById("brand");
 var input2 = <HTMLInputElement> document.getElementById("modeln");
-
+var count = 1;
 
 function createCar() {
 
+  
     let car:Car;
     //preguntar porque no tira error el string obtenido de modeln si en el contructor se espera model:Number
     car = new Car( input1.value, Number(input2.value) );
 
- //   var x = document.getElementById("modeln").value;
-  //  var y = document.getElementById("brand").value;
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model ;
+    let item = document.createElement('div');
+    item.className = "item";
+
+    let header = document.createElement('div');
+    header.className = "header"
+    header.appendChild(document.createTextNode("Car " + count++));
+
+    let div = document.createElement('div');
+    div.className = "ui segment" ;
+    div.appendChild(header);
+    div.appendChild(document.createTextNode(car._brand + " " + car._model));
+
+    item.appendChild(div);
+    list.appendChild(item);
+
+    list.innerHTML = "<div class='ui container'>epa la arepa</div>";
+  //  document.getElementById("showCar").innerHTML = car._brand + " " + car._model ;
     console.log(car);
 }
 

@@ -117,15 +117,27 @@ var RaceCar = /** @class */ (function (_super) {
     });
     return RaceCar;
 }(SportCar));
+var list = document.getElementById("carList");
 var input1 = document.getElementById("brand");
 var input2 = document.getElementById("modeln");
+var count = 1;
 function createCar() {
     var car;
     //preguntar porque no tira error el string obtenido de modeln si en el contructor se espera model:Number
     car = new Car(input1.value, Number(input2.value));
-    //   var x = document.getElementById("modeln").value;
-    //  var y = document.getElementById("brand").value;
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    var item = document.createElement('div');
+    item.className = "item";
+    var header = document.createElement('div');
+    header.className = "header";
+    header.appendChild(document.createTextNode("Car " + count++));
+    var div = document.createElement('div');
+    div.className = "ui segment";
+    div.appendChild(header);
+    div.appendChild(document.createTextNode(car._brand + " " + car._model));
+    item.appendChild(div);
+    list.appendChild(item);
+    list.innerHTML = "<div class='ui container'>epa la arepa</div>";
+    //  document.getElementById("showCar").innerHTML = car._brand + " " + car._model ;
     console.log(car);
 }
 var input3 = document.getElementById("avspeed");

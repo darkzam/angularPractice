@@ -3,7 +3,7 @@
 
 <head>
     <title>TypeScript Todo App</title>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.1.8/semantic.min.css">
 </head>
 
 <body>
@@ -19,24 +19,81 @@
     <div id="container4" class="container"></div>
 
       -->
-    <h2> Car model<h2>
-      <h2>Input properties : <h2>
-      Model number: <input id="modeln" type="text" value=""><br>
-      Brand: <input id="brand" type="text" value=""><br>
-        <button onclick="createCar()">Try it</button>
-          <div id="showCar" class="container"></div>
+      <div class="ui twelve column grid">
+      <div class="ui six wide column">
+      <div class="ui row"></div>
+     <div class="ui segment container">
+  
+      <div class="ui form">
+       <h3 class="ui dividing header"> Car</h3>
+      <div class="two fields">
+       
+        <div class="field">
+          <label> Model number:</label>
+            <input id="modeln" type="text" value="">
+         </div>
+       <div class="field">
+           <label> Brand:</label>
+           <input id="brand" type="text" value="">
+       </div>
+       </div>
+       <button onclick="createCar()" class="ui button">Create Car</button>
+       
+   <h3 class="ui dividing header">SportCar</h3>
+      <div class="three fields"> 
+         <div class="field">
+            <label>Av Speed:</label>
+              <input id="avspeed" type="text" value="">
+         </div>
+         <div class="field">
+           <label>Year:</label>
+             <input id="year" type="text" value="">
+         </div>
+         <div class="field">
+            <label> Color:</label>
+              <input id="color" type="text" value="">
+         </div> 
+       </div>
+       
+        <button onclick="createSportCar()" class="ui button">Create SportCar</button>
+       
+         <h3 class="ui dividing header"> RaceCar</h3>
+          <div class="three fields">
+          <div class="field">
+           <label>Max Speed:</label>
+           <input id="maxspeed" type="text" value="">
+           </div>
+             <div class="field">
+          <label> Brakequality:</label>
+           <input id="brakequality" type="text" value="">
+           </div>
+          <div class="field">
+          <label>Seats: </label>
+          <input id="seats" type="text" value="">
+           </div>
+        </div>
+        <button onclick="createRaceCar()" class="ui button">Create RaceCar</button>
+             
+      </div>
 
-      Av Speed: <input id="avspeed" type="text" value=""><br>
-      Year: <input id="year" type="text" value=""><br>
-      Color: <input id="color" type="text" value=""><br>
-        <button onclick="createSportCar()">Try it</button>
-        <div id="showSportCar" class="container"></div>
 
-     Max Speed: <input id="maxspeed" type="text" value=""><br>
-        Brakequality: <input id="brakequality" type="text" value=""><br>
-          Seats: <input id="seats" type="text" value=""><br>
-            <button onclick="createRaceCar()">Try it</button>
-              <div id="showRaceCar" class="container"></div>
+       
+
+   </div>
+   </div>
+
+   <div class="ui six wide column">
+      <div class="ui row"></div>
+        <div class="ui segment container">
+         <h3 class="ui dividing header"> Car List</h3>
+        
+          <div id=carList class="ui list">
+           
+          </div>
+        
+        </div>
+   </div>
+   </div>
 
     <script type="text/javascript" src="app/app2.js"></script>
 
