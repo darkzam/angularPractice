@@ -8,51 +8,146 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
-var car = /** @class */ (function () {
-    function car(brand, model) {
+var Car = /** @class */ (function () {
+    function Car(brand, model) {
         this.brand = brand;
         this.model = model;
     }
-    return car;
+    Object.defineProperty(Car.prototype, "_brand", {
+        get: function () {
+            return this.brand;
+        },
+        set: function (brand) {
+            this.brand = brand;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Car.prototype, "_model", {
+        get: function () {
+            return this.model;
+        },
+        set: function (model) {
+            this.model = model;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Car;
 }());
-var sportCar = /** @class */ (function (_super) {
-    __extends(sportCar, _super);
-    function sportCar(brand, model, avspeed, year, color) {
+var SportCar = /** @class */ (function (_super) {
+    __extends(SportCar, _super);
+    function SportCar(brand, model, avspeed, year, color) {
         var _this = _super.call(this, brand, model) || this;
         _this.avspeed = avspeed;
         _this.year = year;
         _this.color = color;
         return _this;
     }
-    return sportCar;
-}(car));
-var raceCar = /** @class */ (function (_super) {
-    __extends(raceCar, _super);
-    function raceCar(brand, model, avspeed, year, color, maxspeed, brakequality, seats) {
+    Object.defineProperty(SportCar.prototype, "_avspeed", {
+        get: function () {
+            return this.avspeed;
+        },
+        set: function (avspeed) {
+            this.avspeed = avspeed;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SportCar.prototype, "_year", {
+        get: function () {
+            return this.year;
+        },
+        set: function (year) {
+            this.year = year;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(SportCar.prototype, "_color", {
+        get: function () {
+            return this.color;
+        },
+        set: function (color) {
+            this.color = color;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return SportCar;
+}(Car));
+var RaceCar = /** @class */ (function (_super) {
+    __extends(RaceCar, _super);
+    function RaceCar(brand, model, avspeed, year, color, maxspeed, brakequality, seats) {
         var _this = _super.call(this, brand, model, avspeed, year, color) || this;
         _this.maxspeed = maxspeed;
         _this.brakequality = brakequality;
         _this.seats = seats;
         return _this;
     }
-    return raceCar;
-}(sportCar));
-var c1 = new car("aveo", 343);
-console.log(c1);
+    Object.defineProperty(RaceCar.prototype, "_maxSpeed", {
+        get: function () {
+            return this.maxspeed;
+        },
+        set: function (maxspeed) {
+            this.maxspeed = maxspeed;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RaceCar.prototype, "_brakeQuality", {
+        get: function () {
+            return this.brakequality;
+        },
+        set: function (brakequality) {
+            this.brakequality = brakequality;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(RaceCar.prototype, "_seats", {
+        get: function () {
+            return this.seats;
+        },
+        set: function (seats) {
+            this.seats = seats;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return RaceCar;
+}(SportCar));
+var input1 = document.getElementById("brand");
+var input2 = document.getElementById("modeln");
 function createCar() {
-    var x = document.getElementById("modeln").value;
-    var y = document.getElementById("brand").value;
-    document.getElementById("showCar").innerHTML = x + " " + y;
+    var car;
+    //preguntar porque no tira error el string obtenido de modeln si en el contructor se espera model:Number
+    car = new Car(input1.value, Number(input2.value));
+    //   var x = document.getElementById("modeln").value;
+    //  var y = document.getElementById("brand").value;
+    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    console.log(car);
 }
+var input3 = document.getElementById("avspeed");
+var input4 = document.getElementById("year");
+var input5 = document.getElementById("color");
 function createSportCar() {
-    var x = document.getElementById("avspeed").value;
-    var y = document.getElementById("year").value;
-    var z = document.getElementById("color").value;
-    document.getElementById("showSportCar").innerHTML = x + " " + y + " " + z;
+    var car;
+    car = new SportCar(input1.value, Number(input2.value), Number(input3.value), Number(input4.value), input5.value);
+    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    document.getElementById("showSportCar").innerHTML = car._avspeed + " " + car._year + " " + car._color;
+    console.log(car);
 }
+var input6 = document.getElementById("maxspeed");
+var input7 = document.getElementById("brakequality");
+var input8 = document.getElementById("seats");
 function createRaceCar() {
-    var x = document.getElementById("maxspeed").value;
-    var y = document.getElementById("brakequality").value;
-    var z = document.getElementById("seats").value;
-    document.getElementById("showRaceCar").innerHTML = x + " " + y + " " + z;
+    var car;
+    car = new RaceCar(input1.value, Number(input2.value), Number(input3.value), Number(input4.value), input5.value, Number(input6.value), Number(input7.value), Number(input8.value));
+    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
+    document.getElementById("showSportCar").innerHTML = car._avspeed + " " + car._year + " " + car._color;
+    document.getElementById("showRaceCar").innerHTML = car._maxSpeed + " " + car._brakeQuality + " " + car._seats;
+    console.log(car);
 }
