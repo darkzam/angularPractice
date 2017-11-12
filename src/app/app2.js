@@ -117,49 +117,59 @@ var RaceCar = /** @class */ (function (_super) {
     });
     return RaceCar;
 }(SportCar));
-var list = document.getElementById("carList");
 var input1 = document.getElementById("brand");
 var input2 = document.getElementById("modeln");
+var input3 = document.getElementById("avspeed");
+var input4 = document.getElementById("year");
+var input5 = document.getElementById("color");
+var input6 = document.getElementById("maxspeed");
+var input7 = document.getElementById("brakequality");
+var input8 = document.getElementById("seats");
+var list = document.getElementById("carList");
 var count = 1;
+function validation() {
+    if (isNaN(Number(input2.value)) || isNaN(Number(input3.value)) || isNaN(Number(input4.value)) || isNaN(Number(input6.value)) || isNaN(Number(input7.value)) || isNaN(Number(input8.value))) {
+        return true;
+    }
+    return false;
+}
 function createCar() {
+    if (validation())
+        return;
     var car;
     //preguntar porque no tira error el string obtenido de modeln si en el contructor se espera model:Number
     car = new Car(input1.value, Number(input2.value));
     var item = document.createElement('div');
     item.className = "item";
-    var header = document.createElement('div');
-    header.className = "header";
-    header.appendChild(document.createTextNode("Car " + count++));
-    var div = document.createElement('div');
-    div.className = "ui segment";
-    div.appendChild(header);
-    div.appendChild(document.createTextNode(car._brand + " " + car._model));
-    item.appendChild(div);
+    item.innerHTML = "<h4 class='ui dividing header'>" + (count++) + ") Car" + "</h4>"
+        + "<table class='ui celled table'><thead><tr><th>Brand</th><th>Model</th></tr></thead>" +
+        "<tbody><tr><td>" + car._brand + "</td><td>" + car._model + "</td></tr></tbody></table>";
     list.appendChild(item);
-    list.innerHTML = "<div class='ui container'>epa la arepa</div>";
-    //  document.getElementById("showCar").innerHTML = car._brand + " " + car._model ;
     console.log(car);
 }
-var input3 = document.getElementById("avspeed");
-var input4 = document.getElementById("year");
-var input5 = document.getElementById("color");
 function createSportCar() {
+    if (validation())
+        return;
     var car;
     car = new SportCar(input1.value, Number(input2.value), Number(input3.value), Number(input4.value), input5.value);
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
-    document.getElementById("showSportCar").innerHTML = car._avspeed + " " + car._year + " " + car._color;
+    var item = document.createElement('div');
+    item.className = "item";
+    item.innerHTML = "<h4 class='ui dividing header'>" + (count++) + ") SportCar=>Car" + "</h4>"
+        + "<table class='ui celled table'><thead><tr><th>Brand</th><th>Model</th><th>Av Speed</th><th>Year</th><th>Color</th></tr></thead>" +
+        "<tbody><tr><td>" + car._brand + "</td><td>" + car._model + "</td><td>" + car._avspeed + "</td><td>" + car._year + "</td><td>" + car._color + "</td></tr></tbody></table>";
+    list.appendChild(item);
     console.log(car);
 }
-var input6 = document.getElementById("maxspeed");
-var input7 = document.getElementById("brakequality");
-var input8 = document.getElementById("seats");
 function createRaceCar() {
+    if (validation())
+        return;
     var car;
     car = new RaceCar(input1.value, Number(input2.value), Number(input3.value), Number(input4.value), input5.value, Number(input6.value), Number(input7.value), Number(input8.value));
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
-    document.getElementById("showCar").innerHTML = car._brand + " " + car._model;
-    document.getElementById("showSportCar").innerHTML = car._avspeed + " " + car._year + " " + car._color;
-    document.getElementById("showRaceCar").innerHTML = car._maxSpeed + " " + car._brakeQuality + " " + car._seats;
+    var item = document.createElement('div');
+    item.className = "item";
+    item.innerHTML = "<h4 class='ui dividing header'>" + (count++) + ") RaceCar=>SportCar=>Car" + "</h4>"
+        + "<table class='ui celled table'><thead><tr><th>Brand</th><th>Model</th><th>Av Speed</th><th>Year</th><th>Color</th><th>Max Speed</th><th>Brakequality</th><th>Seats</th></tr></thead>" +
+        "<tbody><tr><td>" + car._brand + "</td><td>" + car._model + "</td><td>" + car._avspeed + "</td><td>" + car._year + "</td><td>" + car._color + "</td><td>" + car._maxSpeed + "</td><td>" + car._brakeQuality + "</td><td>" + car._seats + "</td></tr></tbody></table>";
+    list.appendChild(item);
     console.log(car);
 }
